@@ -49,6 +49,11 @@ export const getArriendosTerminados = async (request: Request, response: Respons
 //CREAR ARRIENDO NUEVO (Registrar un nuevo arriendo)
 //Listoo
 export const crearArriendo = async (request: Request, response: Response) => {
+   const { nombreCliente, patenteVehiculo, rutCliente, tipoVehiculo } = request.body;
+
+    if (!nombreCliente || !patenteVehiculo || !rutCliente || !tipoVehiculo) {
+    response.json({ mensaje: "Los campos son obligatorios." });
+  }
   const nuevoArriendo = await Arriendo.create(request.body);
   response.json({ data: nuevoArriendo });
 };
