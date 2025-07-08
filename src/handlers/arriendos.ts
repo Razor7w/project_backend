@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import Arriendo from "../models/Arriendo";
-import { Sequelize } from "sequelize";
+import { Op, Sequelize } from "sequelize";
 
 //Mostrar todos los arriendos
 export const getArriendos = async (request: Request, response: Response) => {
@@ -10,12 +10,26 @@ export const getArriendos = async (request: Request, response: Response) => {
 
 //Mostrar Los arriendos activos
 export const getArriendosActivos = async (request: Request, response: Response) => {
-  response.json("Listar arriendos activos.");
+    const arriendos = await Arriendo.findAll({
+      where: {
+        fechaFin: null,
+      },
+    });
+
+    response.json({ data: arriendos });
 };
 
 //Mostrar los arriendos terminados
 export const getArriendosTerminados = async (request: Request, response: Response) => {
-  response.json("Listar arriendos terminados.");
+   const arriendos = await Arriendo.findAll({
+      where: {
+        fechaFin: {
+          [Op.not]: null,
+        },
+      },
+    });
+
+    response.json({ data: arriendos });
 };
 
 //CREAR ARRIENDO NUEVO (Registrar un nuevo arriendo)
