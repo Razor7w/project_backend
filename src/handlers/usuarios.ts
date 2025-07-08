@@ -11,18 +11,18 @@ export const CrearUsuario = async (request: Request, response: Response) => {
   }
 
   if (contrasena.length < 6) {
-    response.json("La contraseña debe tener al menos 6 caracteres.");
+    response.json({ mensaje:"La contraseña debe tener al menos 6 caracteres."});
   }
 
   const usuarioExistente = await Usuario.findByPk(correo);
   if (usuarioExistente) {
-    response.json("El usuario ya existe.");
+    response.json({ mensaje:"El usuario ya existe."});
   }
 
   const hashedPassword = await bcrypt.hash(contrasena, saltRounds);
 
   await Usuario.create({ correo, contrasena: hashedPassword });
-  response.json("Usuario creado correctamente");
+  response.json({ mensaje:"Usuario creado correctamente"});
 
 };
 
