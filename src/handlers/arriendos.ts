@@ -65,7 +65,7 @@ export const editarArriendo = async (request: Request, response: Response) => {
   const arriendo = await Arriendo.findByPk(id);
   arriendo.fechaFin = new Date();
   await arriendo.save();
-  response.json({ data: arriendo });
+  response.json({ data: "Devolucion exitosa" });
 };
 
 //Borrar Arriendo
