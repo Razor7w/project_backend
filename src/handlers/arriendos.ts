@@ -1,11 +1,25 @@
 import { Request, Response } from "express";
 import Arriendo from "../models/Arriendo";
-import { Op, Sequelize } from "sequelize";
+import { col, fn, Op, Sequelize } from "sequelize";
 
 //Mostrar todos los arriendos
 export const getArriendos = async (request: Request, response: Response) => {
   const arriendos = await Arriendo.findAll();
   response.json({ data: arriendos });
+};
+
+export const getTotalesPorTipoDeVehiculo = async (req: Request, res: Response) => {
+
+  const resultados = await Arriendo.findAll({
+      attributes: [
+        [col("tipo_vehiculo"), "tipoVehiculo"],
+        [fn("COUNT", col("tipo_vehiculo")), "cantidad"]
+      ],
+      group: [col("tipo_vehiculo")]
+    });
+
+  res.json({ data: resultados });
+
 };
 
 //Mostrar Los arriendos activos
