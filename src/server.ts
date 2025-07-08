@@ -21,7 +21,7 @@ async function conectarBD() {
 conectarBD();
 
 const CorsOptions: CorsOptions = {
-  origin: true, // permite cualquier origen
+  origin: true
 };
 
 server.use(cors(CorsOptions));
