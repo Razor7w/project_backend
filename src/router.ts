@@ -15,7 +15,7 @@ const router = Router();
 router.get("/arriendos", getArriendos);
 router.get("/arriendosActivos", getArriendosActivos);
 router.get("/arriendosTerminados", getArriendosTerminados);
-router.post("/crearArriendos", crearArriendo);
+router.post("/crearArriendo", crearArriendo);
 router.post("/editarArriendo/:id", editarArriendo);
 router.delete("/borrarArriendo/:id", borrarArriendo);
 
