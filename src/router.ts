@@ -6,18 +6,19 @@ import {
   getArriendos,
   getArriendosActivos,
   getArriendosTerminados,
+  getTotalesPorTipoDeVehiculo,
 } from "./handlers/arriendos";
 import { login, logout, password, usuario } from "./handlers/usuarios";
 
 const router = Router();
 
 //Arriendos
-router.get("/arriendos", getArriendos);
 router.get("/arriendosActivos", getArriendosActivos);
 router.get("/arriendosTerminados", getArriendosTerminados);
 router.post("/crearArriendo", crearArriendo);
 router.post("/editarArriendo/:id", editarArriendo);
 router.delete("/borrarArriendo/:id", borrarArriendo);
+router.get("/arriendos/totalesPorTipo", getTotalesPorTipoDeVehiculo);
 
 //Usuarios
 router.post("/usuario", usuario);
