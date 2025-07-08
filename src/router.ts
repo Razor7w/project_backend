@@ -8,7 +8,7 @@ import {
   getArriendosTerminados,
   getTotalesPorTipoDeVehiculo,
 } from "./handlers/arriendos";
-import { CambiarContrasena, CerrarSesion, CrearUsuario, InicioSesion } from "./handlers/usuarios";
+import { CambiarContrasena, CrearUsuario, InicioSesion } from "./handlers/usuarios";
 
 const router = Router();
 
@@ -23,7 +23,6 @@ router.get("/arriendos/totalesPorTipo", getTotalesPorTipoDeVehiculo);
 //Usuarios
 router.post("/crearUsuario", CrearUsuario);
 router.post("/inicioSesion", InicioSesion);
-router.post("/cerrarSesion", CerrarSesion);
 router.put("/cambiarContrasena", CambiarContrasena);
 
 export default router;
