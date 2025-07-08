@@ -21,13 +21,7 @@ async function conectarBD() {
 conectarBD();
 
 const CorsOptions: CorsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || origin === process.env.FRONTEND_URL) {
-      callback(null, true);
-    } else {
-      callback(new Error("No está permitido el acceso desde este origen."), false);
-    }
-  },
+  origin: true, // permite cualquier origen
 };
 
 server.use(cors(CorsOptions));
