@@ -18,7 +18,7 @@ export const getTotalesPorTipoDeVehiculo = async (req: Request, res: Response) =
       group: [col("tipo_vehiculo")]
     });
 
-  res.json({ data: resultados });
+  res.json( resultados );
 
 };
 
