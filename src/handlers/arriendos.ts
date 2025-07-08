@@ -30,7 +30,7 @@ export const crearArriendo = async (request: Request, response: Response) => {
 export const editarArriendo = async (request: Request, response: Response) => {
   const { id } = request.params;
   const arriendo = await Arriendo.findByPk(id);
-  await arriendo.update(request.body);
+  arriendo.fechaFin = new Date();
   await arriendo.save();
   response.json({ data: arriendo });
 };
